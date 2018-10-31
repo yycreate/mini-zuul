@@ -1,0 +1,32 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8799
+spring:
+  application:
+    name: service-gateway-zuul
+  devtools: 
+    livereload:
+      enabled: false
+  
+zuul:
+  BaseFilter:  
+    ACD: 
+      disable: false
+  routes: 
+     users: 
+      path: /user/**
+#      sensitiveHeaders: Authorization  # blacklist，如果不过滤，则须显式设为空。
+      url: https://localhost:8762
+
+ribbon:
+  restclient: 
+    enabled: true
+  okhttp: 
+    enabled: true
+    
+    
+    
+    
